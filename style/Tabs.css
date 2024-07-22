@@ -1,0 +1,47 @@
+Tabs.css .react-tabs__tab-list {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  padding: 0;
+  border: none;
+  list-style: none;
+  padding: 10px 0px;
+}
+
+.react-tabs__tab {
+  /* background-color: #f3f4f6; */
+  padding: 12px 24px;
+  cursor: pointer;
+  border: 1px solid #f3f4f6;
+  outline: none;
+  font-size: 16px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  margin: 0 4px;
+  border-radius: 8px;
+}
+
+.react-tabs__tab--selected {
+  background-color: #1f2937;
+  color: #fff;
+  /* border: 2px solid #1f2937; */
+}
+
+.react-tabs__tab:hover {
+  background-color: #d0d6e1;
+}
+.react-tabs__tab--selected:hover {
+  background-color: #1f2937ad;
+  color: #fff;
+  /* border: 2px solid #1f2937; */
+}
+.react-tabs__tab-panel {
+  display: none;
+  padding: 16px;
+  /* border: 1px solid #e5e7eb; */
+  /* border-radius: 8px; */
+}
+
+.react-tabs__tab-panel--selected {
+  display: block;
+}

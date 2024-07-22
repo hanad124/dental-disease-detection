@@ -1,0 +1,109 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./node_modules/react-tabs/style/react-tabs.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+.react-tabs {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.react-tabs__tab-list {
+  border-bottom: 1px solid #aaa;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.react-tabs__tab {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.react-tabs__tab--selected {
+  background: #fff;
+  border-color: #aaa;
+  color: black;
+  border-radius: 5px 5px 0 0;
+}
+
+.react-tabs__tab--disabled {
+  color: GrayText;
+  cursor: default;
+}
+
+.react-tabs__tab:focus {
+  outline: none;
+}
+
+.react-tabs__tab:focus:after {
+  content: '';
+  position: absolute;
+  height: 5px;
+  left: -4px;
+  right: -4px;
+  bottom: -5px;
+  background: #fff;
+}
+
+.react-tabs__tab-panel {
+  display: none;
+}
+
+.react-tabs__tab-panel--selected {
+  display: block;
+}
+
+/*!************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./style/Tabs.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************/
+Tabs.css .react-tabs__tab-list {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  padding: 0;
+  border: none;
+  list-style: none;
+  padding: 10px 0px;
+}
+
+.react-tabs__tab {
+  /* background-color: #f3f4f6; */
+  padding: 12px 24px;
+  cursor: pointer;
+  border: 1px solid #f3f4f6;
+  outline: none;
+  font-size: 16px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  margin: 0 4px;
+  border-radius: 8px;
+}
+
+.react-tabs__tab--selected {
+  background-color: #1f2937;
+  color: #fff;
+  /* border: 2px solid #1f2937; */
+}
+
+.react-tabs__tab:hover {
+  background-color: #d0d6e1;
+}
+.react-tabs__tab--selected:hover {
+  background-color: #1f2937ad;
+  color: #fff;
+  /* border: 2px solid #1f2937; */
+}
+.react-tabs__tab-panel {
+  display: none;
+  padding: 16px;
+  /* border: 1px solid #e5e7eb; */
+  /* border-radius: 8px; */
+}
+
+.react-tabs__tab-panel--selected {
+  display: block;
+}
+
