@@ -41,7 +41,7 @@ const Fields = () => {
   const fetchImageFile = useImage((state) => state.fetchImageFile);
   const chartData = useImage((state) => state.chartData);
   const [url, setUrl] = useState("");
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<any | null>(null);
 
   const form = useForm({
     resolver: zodResolver(activeTab === 0 ? urlSchema : fileSchema),
@@ -67,7 +67,7 @@ const Fields = () => {
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files ? e.target.files[0] : null;
+    const selectedFile = e.target.files ? e.target.files[0] : (null as any);
     setFile(selectedFile);
     form.setValue("file", selectedFile);
   };
