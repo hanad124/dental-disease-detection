@@ -10,7 +10,8 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import "../style/Tabs.css"; // Import the custom styles
+import "../style/Tabs.css";
+import { IconLink, IconFile } from "@tabler/icons-react";
 
 import {
   Form,
@@ -82,11 +83,17 @@ const Fields = () => {
       <Tabs selectedIndex={activeTab} onSelect={handleTabChange}>
         <TabList
           className={
-            "border flex justify-center items-center py-2 px-5 rounded-lg mx-auto w-fit"
+            "border border-dashed flex justify-center items-center py-2 px-5 rounded-lg mx-auto w-fit"
           }
         >
-          <Tab>URL</Tab>
-          <Tab>File Upload</Tab>
+          <Tab>
+            <IconLink className="rotate-90" size={19} />
+            <span className="ml-2">URL</span>
+          </Tab>
+          <Tab>
+            <IconFile size={17} />
+            <span className="ml-2">File Upload</span>
+          </Tab>
         </TabList>
 
         <TabPanel>

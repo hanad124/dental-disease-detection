@@ -88,10 +88,14 @@ const Result: React.FC<ResultProps> = ({
             </CardHeader>
             {/* chart skeleton */}
             <CardContent>
-              <div className="flex flex-col space-y-2 m-2 mt-3 mb-3">
-                <Skeleton className="h-8 w-full" />
-                <Skeleton className="h-8 w-full" />
-                <Skeleton className="h-8 w-full" />
+              <div className="space-y-2 pt-5 border-t-[1.5px] border-dashed mt-2 flex flex-wrap gap-3 items-center">
+                <Skeleton className="h-8 w-[13rem] rounded-lg" />
+                <Skeleton className="h-8 w-[10rem] rounded-lg" />
+                <Skeleton className="h-8 w-[10rem] rounded-lg" />
+                <Skeleton className="h-8 w-[13rem] rounded-lg" />
+                <Skeleton className="h-8 w-[10rem] rounded-lg" />
+                <Skeleton className="h-8 w-[15rem] rounded-lg" />
+                <Skeleton className="h-8 w-[10rem] rounded-lg" />
               </div>
             </CardContent>
           </Card>
