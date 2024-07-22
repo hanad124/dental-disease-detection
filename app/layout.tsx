@@ -8,21 +8,21 @@ import AppBg from "@/public/assets/app-bg.png";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TikTok Video Downloader - Download TikTok Videos without Watermark",
+  title: "Dental Diseases Detection",
   description:
-    "Download TikTok videos without watermark for free. Just paste the link and download the video in high quality.",
+    "Detect dental diseases in X-ray images with the help of machine learning models. This tool helps to identify the presence of diseases in the teeth.",
 
   // open graph
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://tiktok-video-downloader-five.vercel.app/",
+    url: "https://dental-disease-detection.vercel.app/",
     images: [
       {
         url: AppBg.src,
         width: 512,
         height: 512,
-        alt: "TikTok Video Downloader",
+        alt: "Dental Diseases Detection",
       },
     ],
   },
