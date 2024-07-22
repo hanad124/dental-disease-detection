@@ -1,10 +1,6 @@
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
-import useDownloader from "react-use-downloader";
 import Image from "next/image";
-import { Progress } from "@/components/ui/progress";
-import prettyBytes from "pretty-bytes";
-import ApexChart from "./Chart";
 import {
   Card,
   CardContent,
