@@ -2,10 +2,15 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import OpenAI from "openai";
+import dotenv from "dotenv";
+
+// Load environment variables from .env file
+dotenv.config();
 
 const app = express();
+
 const openai = new OpenAI({
-  apiKey: "sk-proj-LvAb0pmrE09VeWXo5iA6T3BlbkFJJ2kQ4LNvKyZpPy3Ouxvr",
+  apiKey: process.env.OPEN_AI_API_KEY,
 });
 
 app.use(cors());
