@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
 import {
@@ -10,8 +10,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-
 import { FiAlertTriangle } from "react-icons/fi";
+import { useImage } from "@/store/image";
 
 interface ResultProps {
   image: any;
@@ -31,15 +31,53 @@ const Result: React.FC<ResultProps> = ({
   invalidLink,
   chartData,
 }) => {
+  const explanations = useImage((state) => state.explanations);
+  const fetchExplanation = useImage((state) => state.fetchExplanation);
+
+  useEffect(() => {
+    chartData.classes.forEach((disease) => {
+      if (!explanations[disease]) {
+        fetchExplanation(disease);
+      }
+    });
+  }, [chartData.classes, explanations, fetchExplanation]);
+
   const noImageData = !image || Object.keys(image).length === 0;
 
-  console.log("image", image);
+  const formatExplanation = (text: string) => {
+    const lines = text.split("\n");
+    const elements = lines.map((line, index) => {
+      if (line.startsWith("Title:")) {
+        return (
+          <h2 key={index} className="text-lg font-semibold mt-4">
+            {line.replace("Title:", "").trim()}
+          </h2>
+        );
+      }
+      if (line.startsWith("List:")) {
+        const items = line.replace("List:", "").trim().split(", ");
+        return (
+          <ul key={index} className="list-disc list-inside">
+            {items.map((item, itemIndex) => (
+              <li key={itemIndex}>{item}</li>
+            ))}
+          </ul>
+        );
+      }
+      return (
+        <p key={index} className="mt-2">
+          {line}
+        </p>
+      );
+    });
+    return elements;
+  };
 
   return (
     <>
-      <div className="px-4 md:px-0  w-full flex justify-center my-10">
+      <div className="px-4 md:px-0 w-full flex justify-center my-10">
         {noImageData ? null : (
-          <Card className=" w-full md:w-[43rem]">
+          <Card className="w-full md:w-[43rem]">
             <CardHeader>
               <Image
                 src={image || coverPhoto}
@@ -51,15 +89,12 @@ const Result: React.FC<ResultProps> = ({
             </CardHeader>
 
             <CardContent>
-              <div className=" m-2 mt-3 mb-3">
+              <div className="m-2 mt-3 mb-3">
                 <CardTitle>
                   <h1 className="text-2xl font-semibold mb-4">
                     Inference Results
                   </h1>
                 </CardTitle>
-                {/* 
-                display the chart data as list items
-                 */}
                 <ul className="space-y-2 pt-5 border-t-[1.5px] border-dashed mt-2 flex flex-wrap gap-3 items-center">
                   {chartData.classes.map((name, index) => (
                     <li
@@ -72,8 +107,13 @@ const Result: React.FC<ResultProps> = ({
                       >
                         {name}
                       </Badge>
-
-                      {/* <p>{chartData.confidences[index].toFixed(2)}</p> */}
+                      {explanations[name] ? (
+                        <div className="p-4 bg-gray-50 border rounded-md">
+                          {formatExplanation(explanations[name])}
+                        </div>
+                      ) : (
+                        <Skeleton className="h-8 w-full md:w-[36rem] rounded-lg" />
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -82,11 +122,10 @@ const Result: React.FC<ResultProps> = ({
           </Card>
         )}
         {loader ? (
-          <Card className="w-full md: max-w-[43rem]">
+          <Card className="w-full md:max-w-[43rem]">
             <CardHeader>
               <Skeleton className="h-[380px] w-full rounded-xl" />
             </CardHeader>
-            {/* chart skeleton */}
             <CardContent>
               <div className="space-y-2 pt-5 border-t-[1.5px] border-dashed mt-2 flex flex-wrap gap-3 items-center">
                 <Skeleton className="h-8 w-[13rem] rounded-lg" />
@@ -101,18 +140,16 @@ const Result: React.FC<ResultProps> = ({
           </Card>
         ) : null}
         {invalidLink ? (
-          <>
-            <CardFooter>
-              <CardDescription>
-                <div className="flex items-center gap-4 bg-red-500/20 px-10 py-3 rounded-md">
-                  <FiAlertTriangle className="text-red-500 text-xl" />
-                  <p className="text-red-500">
-                    Invalid link. Please enter a valid link
-                  </p>
-                </div>
-              </CardDescription>
-            </CardFooter>
-          </>
+          <CardFooter>
+            <CardDescription>
+              <div className="flex items-center gap-4 bg-red-500/20 px-10 py-3 rounded-md">
+                <FiAlertTriangle className="text-red-500 text-xl" />
+                <p className="text-red-500">
+                  Invalid link. Please enter a valid link
+                </p>
+              </div>
+            </CardDescription>
+          </CardFooter>
         ) : null}
       </div>
     </>

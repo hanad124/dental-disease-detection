@@ -896,6 +896,12 @@ video {
      -moz-user-select: none;
           user-select: none;
 }
+.list-inside {
+  list-style-position: inside;
+}
+.list-disc {
+  list-style-type: disc;
+}
 .flex-col {
   flex-direction: column;
 }
@@ -1036,6 +1042,10 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+.bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 .bg-gradient-to-tl {
   background-image: linear-gradient(to top left, var(--tw-gradient-stops));
@@ -1817,6 +1827,10 @@ video {
 
   .md\:max-w-\[420px\] {
     max-width: 420px;
+  }
+
+  .md\:max-w-\[43rem\] {
+    max-width: 43rem;
   }
 
   .md\:px-0 {

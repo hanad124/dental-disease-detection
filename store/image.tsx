@@ -22,10 +22,12 @@ interface Image {
     confidences: number[];
     colors: string[];
   };
+  explanations: Record<string, string>;
   loading: boolean;
   notImageUrl: boolean;
   fetchImage: (url: string) => void;
   fetchImageFile: (file: File) => void;
+  fetchExplanation: (disease: string) => Promise<void>;
 }
 
 const jsonApi = {
@@ -54,6 +56,7 @@ export const useImage = create<Image>((set) => ({
     confidences: [],
     colors: [], // Add colors to the chart data
   },
+  explanations: {},
   loading: false,
   notImageUrl: false,
   fetchImage: async (url: string) => {
@@ -125,6 +128,17 @@ export const useImage = create<Image>((set) => ({
       });
     } catch (error) {
       set({ loading: false, notImageUrl: false });
+    }
+  },
+  fetchExplanation: async (disease: string) => {
+    try {
+      const response = await axios.post('http://localhost:3001/explain', { disease });
+      const explanation = response.data.content;
+      set((state) => ({
+        explanations: { ...state.explanations, [disease]: explanation },
+      }));
+    } catch (error) {
+      console.error("Error fetching explanation:", error);
     }
   },
 }));
