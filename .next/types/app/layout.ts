@@ -1,4 +1,4 @@
-// File: /Users/macbookpro/Downloads/hanad/collections/Detection of Dental Diseases through X-Ray Images Using Neural Network/ml-project/dental disease detection/app/layout.tsx
+// File: C:\Users\HP\OneDrive\Pictures\hanad\thesis\dental-disease-detection\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
