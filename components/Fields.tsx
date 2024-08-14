@@ -11,7 +11,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "../style/Tabs.css";
-import { IconLink, IconFile } from "@tabler/icons-react";
+import { IconLink, IconFile,IconInfoCircle } from "@tabler/icons-react";
 
 import {
   Form,
@@ -95,6 +95,12 @@ const Fields = () => {
             <span className="ml-2">File Upload</span>
           </Tab>
         </TabList>
+        <div className="flex justify-center items-center mt-2">
+          <IconInfoCircle size={17} className="text-gray-500" />
+          <span className="ml-2 text-[13px] text-gray-400 font-light">
+            choose the method to upload your dental X-ray
+          </span>
+        </div>
 
         <TabPanel>
           <Form {...form}>
@@ -139,13 +145,13 @@ const Fields = () => {
                   {loading ? (
                     <>
                       <div className="flex items-center gap-x-2">
-                        <span>Interferring</span>
+                        <span>Submitting</span>
                         <FiLoader className="animate-spin w-4 h-4" />{" "}
                       </div>
                     </>
                   ) : (
                     <>
-                      <span>Interfer</span>
+                      <span>Submit</span>
                       <FiRadio className="w-5 h-5" />
                     </>
                   )}
@@ -197,13 +203,13 @@ const Fields = () => {
                   {loading ? (
                     <>
                       <div className="flex items-center gap-x-2">
-                        <span>Interferring</span>
+                        <span>Submitting</span>
                         <FiLoader className="animate-spin w-4 h-4" />{" "}
                       </div>
                     </>
                   ) : (
                     <>
-                      <span>Interfer</span>
+                      <span>Submit</span>
                       <FiRadio className="w-5 h-5" />
                     </>
                   )}

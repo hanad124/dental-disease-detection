@@ -24,10 +24,15 @@ app.post("/explain", async (req, res) => {
       messages: [
         {
           role: "system",
-          content: `Provide a structured explanation and treatment recommendations for ${disease}. Format as follows: Title: <title>\nBody: <body>\nList: <comma separated list items>`,
+          content: `Briefly explain ${disease} and list key treatment options. Format as follows:
+          Explanation: [2-3 sentences]
+          Treatments: [3-5 bullet points]
+          Title: <title>
+          Body: <body>
+          List: <comma separated list items>`,
         },
       ],
-      model: "gpt-4",
+      model: "gpt-4o-mini",
     });
 
     res.status(200).json(completion.choices[0].message);

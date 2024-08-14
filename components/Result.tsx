@@ -12,6 +12,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { FiAlertTriangle } from "react-icons/fi";
 import { useImage } from "@/store/image";
+import { IconInfoCircle, IconDownload } from "@tabler/icons-react";
+
 
 interface ResultProps {
   image: any;
@@ -79,43 +81,64 @@ const Result: React.FC<ResultProps> = ({
         {noImageData ? null : (
           <Card className="w-full md:w-[43rem]">
             <CardHeader>
-              <Image
-                src={image || coverPhoto}
-                height={300}
-                width={400}
-                alt={"inference result"}
-                className="max-h-[480px] w-full rounded-xl"
-              />
+              <div className="relative">
+                <Image
+                  src={image || coverPhoto}
+                  height={300}
+                  width={400}
+                  alt={"inference result"}
+                  className="max-h-[480px] w-full rounded-xl"
+                />
+                {image && chartData.classes.length > 0 && (
+                  <a
+                    href={image}
+                    download="dental_xray_analysis.jpg"
+                    className="absolute bottom-2 right-2 bg-white bg-blue-500 text-white hover:bg-blue-600 hover:text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out flex items-center gap-2"
+                  >
+                    <IconDownload className="text-white" size={22} />
+                    <p className="text-white">Download</p>
+                  </a>
+                )}
+              </div>
             </CardHeader>
 
             <CardContent>
               <div className="m-2 mt-3 mb-3">
                 <CardTitle>
                   <h1 className="text-2xl font-semibold mb-4">
-                    Inference Results
+                    Dental X-Ray Analysis Results
                   </h1>
                 </CardTitle>
                 <ul className="space-y-2 pt-5 border-t-[1.5px] border-dashed mt-2 flex flex-wrap gap-3 items-center">
-                  {chartData.classes.map((name, index) => (
-                    <li
-                      key={index}
-                      className="flex flex-wrap gap-3 items-center"
-                    >
-                      <Badge
-                        variant="outline"
-                        className="py-2 hover:bg-primary hover:text-white cursor-pointer"
+                  {chartData.classes.length > 0 ? (
+                    chartData.classes.map((name, index) => (
+                      <li
+                        key={index}
+                        className="flex flex-wrap gap-3 items-center"
                       >
-                        {name}
-                      </Badge>
-                      {explanations[name] ? (
-                        <div className="p-4 bg-gray-50 border rounded-md">
-                          {formatExplanation(explanations[name])}
-                        </div>
-                      ) : (
-                        <Skeleton className="h-8 w-full md:w-[36rem] rounded-lg" />
-                      )}
+                        <Badge
+                          variant="outline"
+                          className="py-2 hover:bg-primary hover:text-white cursor-pointer"
+                        >
+                          {name}
+                        </Badge>
+                        {explanations[name] ? (
+                          <div className="p-4 bg-gray-50 border rounded-md">
+                            {formatExplanation(explanations[name])}
+                          </div>
+                        ) : (
+                          <Skeleton className="h-8 w-full md:w-[36rem] rounded-lg" />
+                        )}
+                      </li>
+                    ))
+                  ) : (
+                    <li className="text-center w-full flex items-center justify-center gap-2">
+                      <IconInfoCircle className="text-gray-500" size={22} />
+                      <p className="text-gray-500">
+                        Please enter a dental X-ray image to see the analysis results.
+                      </p>
                     </li>
-                  ))}
+                  )}
                 </ul>
               </div>
             </CardContent>
@@ -138,7 +161,7 @@ const Result: React.FC<ResultProps> = ({
               </div>
             </CardContent>
           </Card>
-        ) : null}
+        ) : (null)}
         {invalidLink ? (
           <CardFooter>
             <CardDescription>
