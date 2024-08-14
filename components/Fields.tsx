@@ -107,7 +107,7 @@ const Fields = () => {
             <div className="flex justify-center  mx-auto w-full mt-10">
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="flex  gap-3  relative"
+                className="flex gap-3  relative"
               >
                 <FormField
                   control={form.control}

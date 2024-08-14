@@ -141,4 +141,7 @@ export const useImage = create<Image>((set) => ({
       console.error("Error fetching explanation:", error);
     }
   },
+
+
+  
 }));
